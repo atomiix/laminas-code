@@ -6,6 +6,7 @@ use Laminas\Code\Reflection\DocBlock\Tag\ParamTag;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionParameter;
+use ReturnTypeWillChange;
 
 use function method_exists;
 
@@ -19,6 +20,7 @@ class ParameterReflection extends ReflectionParameter implements ReflectionInter
      *
      * @return ClassReflection
      */
+    #[ReturnTypeWillChange]
     public function getDeclaringClass()
     {
         $phpReflection     = parent::getDeclaringClass();
@@ -33,6 +35,7 @@ class ParameterReflection extends ReflectionParameter implements ReflectionInter
      *
      * @return null|ClassReflection
      */
+    #[ReturnTypeWillChange]
     public function getClass()
     {
         $phpReflectionType = parent::getType();
@@ -51,6 +54,7 @@ class ParameterReflection extends ReflectionParameter implements ReflectionInter
      *
      * @return FunctionReflection|MethodReflection
      */
+    #[ReturnTypeWillChange]
     public function getDeclaringFunction()
     {
         $phpReflection = parent::getDeclaringFunction();
