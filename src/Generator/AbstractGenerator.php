@@ -25,10 +25,10 @@ abstract class AbstractGenerator implements GeneratorInterface
     protected $indentation = '    ';
 
     /**
-     * TODO: Type should be changed to "string" in the next major version. Nullable for BC
      * @var string|null
+     * TODO: Type should be changed to "string" in the next major version. Nullable for BC
      */
-    protected $sourceContent = null;
+    protected $sourceContent;
 
     /**
      * @param  array $options

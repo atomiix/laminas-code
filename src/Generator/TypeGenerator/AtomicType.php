@@ -158,7 +158,9 @@ final class AtomicType
 
         if (
             $this->requiresUnionWithStandaloneType() &&
-            [] === array_filter($others, static function (self $type): bool { return ! $type->requiresUnionWithStandaloneType(); })
+            [] === array_filter($others, static function (self $type): bool {
+                return ! $type->requiresUnionWithStandaloneType();
+            })
         ) {
             throw new InvalidArgumentException(sprintf(
                 'Type "%s" requires to be composed with non-standalone types',

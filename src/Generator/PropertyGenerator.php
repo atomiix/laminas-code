@@ -16,7 +16,7 @@ class PropertyGenerator extends AbstractMemberGenerator
     protected $isConst = false;
 
     /** @var PropertyValueGenerator|null */
-    protected $defaultValue = null;
+    protected $defaultValue;
 
     /** @var bool */
     private $omitDefaultValue = false;

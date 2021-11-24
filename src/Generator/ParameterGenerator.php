@@ -14,10 +14,10 @@ class ParameterGenerator extends AbstractGenerator
     protected $name = '';
 
     /** @var TypeGenerator|null */
-    protected $type = null;
+    protected $type;
 
     /** @var ValueGenerator|null */
-    protected $defaultValue = null;
+    protected $defaultValue;
 
     /** @var int */
     protected $position = 0;

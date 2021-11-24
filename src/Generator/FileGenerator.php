@@ -43,7 +43,7 @@ class FileGenerator extends AbstractGenerator
     protected $filename = '';
 
     /** @var DocBlockGenerator|null */
-    protected $docBlock = null;
+    protected $docBlock;
 
     /** @var string[] */
     protected $requiredFiles = [];

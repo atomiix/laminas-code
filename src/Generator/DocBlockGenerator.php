@@ -33,7 +33,7 @@ class DocBlockGenerator extends AbstractGenerator
     protected $wordwrap = true;
 
     /** @var TagManager|null */
-    protected static $tagManager = null;
+    protected static $tagManager;
 
     /**
      * Build a DocBlock generator object from a reflection object

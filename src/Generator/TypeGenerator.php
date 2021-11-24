@@ -52,7 +52,9 @@ final class TypeGenerator implements GeneratorInterface
         return self::fromTypeString(implode(
             '|',
             array_map(
-                static function (ReflectionNamedType $type) use ($currentClass): string { return self::reflectionNamedTypeToString($type, $currentClass); },
+                static function (ReflectionNamedType $type) use ($currentClass): string {
+                    return self::reflectionNamedTypeToString($type, $currentClass);
+                },
                 $type instanceof ReflectionNamedType
                     ? [$type]
                     : $type->getTypes()
@@ -155,7 +157,9 @@ final class TypeGenerator implements GeneratorInterface
     public function generate()
     {
         $typesAsStrings = array_map(
-            function (AtomicType $type): string { return $type->fullyQualifiedName(); },
+            function (AtomicType $type): string {
+                return $type->fullyQualifiedName();
+            },
             $this->types
         );
 
@@ -179,7 +183,9 @@ final class TypeGenerator implements GeneratorInterface
     public function __toString()
     {
         return implode('|', array_map(
-            function (AtomicType $type): string { return $type->type; },
+            function (AtomicType $type): string {
+                return $type->type;
+            },
             $this->types
         ));
     }

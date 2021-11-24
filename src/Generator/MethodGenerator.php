@@ -20,7 +20,7 @@ use function uasort;
 class MethodGenerator extends AbstractMemberGenerator
 {
     /** @var DocBlockGenerator|null */
-    protected $docBlock = null;
+    protected $docBlock;
 
     /** @var ParameterGenerator[] */
     protected $parameters = [];
@@ -29,7 +29,7 @@ class MethodGenerator extends AbstractMemberGenerator
     protected $body = '';
 
     /** @var TypeGenerator|null */
-    private $returnType = null;
+    private $returnType;
 
     /** @var bool */
     private $returnsReference = false;

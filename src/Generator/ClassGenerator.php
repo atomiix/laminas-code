@@ -34,13 +34,13 @@ class ClassGenerator extends AbstractGenerator implements TraitUsageInterface
     public const FLAG_FINAL         = 0x02;
 
     /** @var FileGenerator|null */
-    protected $containingFileGenerator = null;
+    protected $containingFileGenerator;
 
     /** @var string|null */
-    protected $namespaceName = null;
+    protected $namespaceName;
 
     /** @var DocBlockGenerator|null */
-    protected $docBlock = null;
+    protected $docBlock;
 
     /** @var string */
     protected $name = '';
@@ -52,7 +52,7 @@ class ClassGenerator extends AbstractGenerator implements TraitUsageInterface
      * @var string|null
      * @psalm-var ?class-string
      */
-    protected $extendedClass = null;
+    protected $extendedClass;
 
     /**
      * Array of implemented interface names
@@ -483,7 +483,9 @@ class ClassGenerator extends AbstractGenerator implements TraitUsageInterface
 
         return (bool) array_filter(
             array_map([TypeGenerator::class, 'fromTypeString'], $this->implementedInterfaces),
-            static function (TypeGenerator $interface) use ($interfaceType): bool { return $interfaceType->equals($interface); }
+            static function (TypeGenerator $interface) use ($interfaceType): bool {
+                return $interfaceType->equals($interface);
+            }
         );
     }
 
@@ -498,7 +500,9 @@ class ClassGenerator extends AbstractGenerator implements TraitUsageInterface
 
         $this->implementedInterfaces = array_filter(
             $this->implementedInterfaces,
-            static function (string $interface) use ($interfaceType): bool { return ! TypeGenerator::fromTypeString($interface)->equals($interfaceType); }
+            static function (string $interface) use ($interfaceType): bool {
+                return ! TypeGenerator::fromTypeString($interface)->equals($interfaceType);
+            }
         );
 
         return $this;
