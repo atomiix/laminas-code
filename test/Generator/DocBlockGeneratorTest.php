@@ -202,7 +202,7 @@ EOS;
         $generator = new DocBlockGenerator(
             "foo",
             null,
-            [new Tag\GenericTag("var", "array")],
+            [new Tag\GenericTag("var", "array")]
         );
 
         $expected = '/**' . DocBlockGenerator::LINE_FEED

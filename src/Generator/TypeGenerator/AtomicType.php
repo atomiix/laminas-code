@@ -57,11 +57,17 @@ final class AtomicType
     private const VALID_IDENTIFIER_MATCHER = '/^[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*'
         . '(\\\\[a-zA-Z_\x80-\xff][a-zA-Z0-9_\x80-\xff]*)*$/';
 
-    /** @psalm-var value-of<AtomicType::BUILT_IN_TYPES_PRECEDENCE>|0 */
-    public int $sortIndex;
+    /**
+     * @var int
+     * @psalm-var value-of<AtomicType::BUILT_IN_TYPES_PRECEDENCE>|0
+     */
+    public $sortIndex;
 
-    /** @psalm-var non-empty-string */
-    public string $type;
+    /**
+     * @var string
+     * @psalm-var non-empty-string
+     */
+    public $type;
 
     /**
      * @psalm-param non-empty-string $type
@@ -152,7 +158,7 @@ final class AtomicType
 
         if (
             $this->requiresUnionWithStandaloneType() &&
-            [] === array_filter($others, static fn (self $type): bool => ! $type->requiresUnionWithStandaloneType())
+            [] === array_filter($others, static function (self $type): bool { return ! $type->requiresUnionWithStandaloneType(); })
         ) {
             throw new InvalidArgumentException(sprintf(
                 'Type "%s" requires to be composed with non-standalone types',

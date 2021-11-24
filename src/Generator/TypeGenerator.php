@@ -29,8 +29,10 @@ final class TypeGenerator implements GeneratorInterface
      * @var AtomicType[]
      * @psalm-var non-empty-list<AtomicType>
      */
-    private array $types;
-    private bool $nullable;
+    private $types;
+
+    /** @var bool */
+    private $nullable;
 
     /**
      * @internal
@@ -50,7 +52,7 @@ final class TypeGenerator implements GeneratorInterface
         return self::fromTypeString(implode(
             '|',
             array_map(
-                static fn(ReflectionNamedType $type): string => self::reflectionNamedTypeToString($type, $currentClass),
+                static function (ReflectionNamedType $type) use ($currentClass): string { return self::reflectionNamedTypeToString($type, $currentClass); },
                 $type instanceof ReflectionNamedType
                     ? [$type]
                     : $type->getTypes()
@@ -96,8 +98,9 @@ final class TypeGenerator implements GeneratorInterface
 
         usort(
             $types,
-            static fn(AtomicType $left, AtomicType $right): int
-                => [$left->sortIndex, $left->type] <=> [$right->sortIndex, $right->type]
+            static function (AtomicType $left, AtomicType $right): int {
+                return [$left->sortIndex, $left->type] <=> [$right->sortIndex, $right->type];
+            }
         );
 
         assert([] !== $types);
@@ -152,7 +155,7 @@ final class TypeGenerator implements GeneratorInterface
     public function generate()
     {
         $typesAsStrings = array_map(
-            fn(AtomicType $type): string => $type->fullyQualifiedName(),
+            function (AtomicType $type): string { return $type->fullyQualifiedName(); },
             $this->types
         );
 
@@ -176,7 +179,7 @@ final class TypeGenerator implements GeneratorInterface
     public function __toString()
     {
         return implode('|', array_map(
-            fn(AtomicType $type): string => $type->type,
+            function (AtomicType $type): string { return $type->type; },
             $this->types
         ));
     }

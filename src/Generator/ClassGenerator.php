@@ -33,18 +33,26 @@ class ClassGenerator extends AbstractGenerator implements TraitUsageInterface
     public const FLAG_ABSTRACT      = 0x01;
     public const FLAG_FINAL         = 0x02;
 
-    protected ?FileGenerator $containingFileGenerator = null;
+    /** @var FileGenerator|null */
+    protected $containingFileGenerator = null;
 
-    protected ?string $namespaceName = null;
+    /** @var string|null */
+    protected $namespaceName = null;
 
-    protected ?DocBlockGenerator $docBlock = null;
+    /** @var DocBlockGenerator|null */
+    protected $docBlock = null;
 
-    protected string $name = '';
+    /** @var string */
+    protected $name = '';
 
-    protected int $flags = 0x00;
+    /** @var int */
+    protected $flags = 0x00;
 
-    /** @psalm-var ?class-string */
-    protected ?string $extendedClass = null;
+    /**
+     * @var string|null
+     * @psalm-var ?class-string
+     */
+    protected $extendedClass = null;
 
     /**
      * Array of implemented interface names
@@ -52,19 +60,19 @@ class ClassGenerator extends AbstractGenerator implements TraitUsageInterface
      * @var string[]
      * @psalm-var array<class-string>
      */
-    protected array $implementedInterfaces = [];
+    protected $implementedInterfaces = [];
 
     /** @var PropertyGenerator[] */
-    protected array $properties = [];
+    protected $properties = [];
 
     /** @var PropertyGenerator[] */
-    protected array $constants = [];
+    protected $constants = [];
 
     /** @var MethodGenerator[] */
-    protected array $methods = [];
+    protected $methods = [];
 
     /** @var TraitUsageGenerator Object to encapsulate trait usage logic */
-    protected TraitUsageGenerator $traitUsageGenerator;
+    protected $traitUsageGenerator;
 
     /**
      * Build a Code Generation Php Object from a Class Reflection
@@ -475,7 +483,7 @@ class ClassGenerator extends AbstractGenerator implements TraitUsageInterface
 
         return (bool) array_filter(
             array_map([TypeGenerator::class, 'fromTypeString'], $this->implementedInterfaces),
-            static fn (TypeGenerator $interface): bool => $interfaceType->equals($interface)
+            static function (TypeGenerator $interface) use ($interfaceType): bool { return $interfaceType->equals($interface); }
         );
     }
 
@@ -490,7 +498,7 @@ class ClassGenerator extends AbstractGenerator implements TraitUsageInterface
 
         $this->implementedInterfaces = array_filter(
             $this->implementedInterfaces,
-            static fn (string $interface): bool => ! TypeGenerator::fromTypeString($interface)->equals($interfaceType)
+            static function (string $interface) use ($interfaceType): bool { return ! TypeGenerator::fromTypeString($interface)->equals($interfaceType); }
         );
 
         return $this;

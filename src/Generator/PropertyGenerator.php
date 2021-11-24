@@ -12,11 +12,14 @@ class PropertyGenerator extends AbstractMemberGenerator
 {
     public const FLAG_CONSTANT = 0x08;
 
-    protected bool $isConst = false;
+    /** @var bool */
+    protected $isConst = false;
 
-    protected ?PropertyValueGenerator $defaultValue = null;
+    /** @var PropertyValueGenerator|null */
+    protected $defaultValue = null;
 
-    private bool $omitDefaultValue = false;
+    /** @var bool */
+    private $omitDefaultValue = false;
 
     /**
      * @return static
