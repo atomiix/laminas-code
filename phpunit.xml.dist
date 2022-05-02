@@ -10,12 +10,6 @@
         </testsuite>
     </testsuites>
 
-    <coverage>
-        <include>
-            <directory suffix=".php">./src</directory>
-        </include>
-    </coverage>
-
     <php>
         <!-- Enable this if you have installed Doctrine\Common on the
              include_path or via Composer. -->

@@ -29,10 +29,19 @@ final class TypeGenerator implements GeneratorInterface
     /**
      * @var AtomicType[]
      * @psalm-var non-empty-list<AtomicType>
+     * @var array
      */
-    private array $types;
-    private bool $nullable;
-    private bool $isIntersection;
+    private $types;
+
+    /**
+     * @var bool
+     */
+    private $nullable;
+
+    /**
+     * @var bool
+     */
+    private $isIntersection;
 
     /**
      * @internal
@@ -60,7 +69,7 @@ final class TypeGenerator implements GeneratorInterface
                 ? '&'
                 : '|',
             array_map(
-                static fn(ReflectionNamedType $type): string => self::reflectionNamedTypeToString($type, $currentClass),
+                static function(ReflectionNamedType $type) use ($currentClass): string { return self::reflectionNamedTypeToString($type, $currentClass); },
                 $type instanceof ReflectionNamedType
                     ? [$type]
                     : $type->getTypes()
@@ -115,8 +124,9 @@ final class TypeGenerator implements GeneratorInterface
 
         usort(
             $types,
-            static fn(AtomicType $left, AtomicType $right): int
-                => [$left->sortIndex, $left->type] <=> [$right->sortIndex, $right->type]
+            static function(AtomicType $left, AtomicType $right): int {
+                return [$left->sortIndex, $left->type] <=> [$right->sortIndex, $right->type];
+            }
         );
 
         assert([] !== $types);
@@ -176,7 +186,7 @@ final class TypeGenerator implements GeneratorInterface
     public function generate(): string
     {
         $typesAsStrings = array_map(
-            static fn (AtomicType $type): string => $type->fullyQualifiedName(),
+            static function (AtomicType $type): string { return $type->fullyQualifiedName(); },
             $this->types
         );
 
@@ -200,7 +210,7 @@ final class TypeGenerator implements GeneratorInterface
     public function __toString(): string
     {
         return implode($this->atomicTypesSeparator(), array_map(
-            static fn (AtomicType $type): string => $type->type,
+            static function (AtomicType $type): string { return $type->type; },
             $this->types
         ));
     }

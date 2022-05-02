@@ -387,6 +387,7 @@ EOS;
         $this->assertSame('    public static $fooStaticProperty;', $code);
     }
 
+    /** @requires PHP >= 7.3 */
     public function testFromReflectionOmitsTypeHintInTypedProperty(): void
     {
         $reflectionProperty = new PropertyReflection(ClassWithTypedProperty::class, 'typedProperty');

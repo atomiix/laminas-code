@@ -4,7 +4,10 @@ namespace Laminas\Code\Generator;
 
 class PropertyValueGenerator extends ValueGenerator
 {
-    protected int $arrayDepth = 1;
+    /**
+     * @var int
+     */
+    protected $arrayDepth = 1;
 
     /**
      * @return string

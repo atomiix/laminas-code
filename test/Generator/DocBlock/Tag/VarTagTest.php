@@ -13,9 +13,15 @@ use PHPUnit\Framework\TestCase;
  */
 class VarTagTest extends TestCase
 {
-    private VarTag $tag;
+    /**
+     * @var VarTag
+     */
+    private $tag;
 
-    private TagManager $tagManager;
+    /**
+     * @var TagManager
+     */
+    private $tagManager;
 
     protected function setUp(): void
     {

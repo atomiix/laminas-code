@@ -54,7 +54,7 @@ final class CaseFactory
         $backingType = $enum->getBackingType();
 
         if ($backingType === null) {
-            $callback  = static fn(ReflectionEnumUnitCase $singleCase): string => $singleCase->getName();
+            $callback  = static function(ReflectionEnumUnitCase $singleCase): string { return $singleCase->getName(); };
             $pureCases = array_map($callback, $enum->getCases());
 
             return PureCases::fromCases($pureCases);

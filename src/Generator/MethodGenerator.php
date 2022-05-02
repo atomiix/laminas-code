@@ -19,16 +19,28 @@ use function uasort;
 
 class MethodGenerator extends AbstractMemberGenerator
 {
-    protected ?DocBlockGenerator $docBlock = null;
+    /**
+     * @var DocBlockGenerator|null
+     */
+    protected $docBlock = null;
 
     /** @var ParameterGenerator[] */
-    protected array $parameters = [];
+    protected $parameters = [];
 
-    protected string $body = '';
+    /**
+     * @var string
+     */
+    protected $body = '';
 
-    private ?TypeGenerator $returnType = null;
+    /**
+     * @var TypeGenerator|null
+     */
+    private $returnType = null;
 
-    private bool $returnsReference = false;
+    /**
+     * @var bool
+     */
+    private $returnsReference = false;
 
     /**
      * @return MethodGenerator
@@ -330,8 +342,9 @@ class MethodGenerator extends AbstractMemberGenerator
     {
         uasort(
             $this->parameters,
-            static fn(ParameterGenerator $item1, ParameterGenerator $item2)
-                => $item1->getPosition() <=> $item2->getPosition()
+            static function(ParameterGenerator $item1, ParameterGenerator $item2) {
+                return $item1->getPosition() <=> $item2->getPosition();
+            }
         );
     }
 

@@ -18,15 +18,19 @@ abstract class AbstractGenerator implements GeneratorInterface
      */
     public const LINE_FEED = "\n";
 
-    protected bool $isSourceDirty = true;
+    /**
+     * @var bool
+     */
+    protected $isSourceDirty = true;
 
     /** @var string 4 spaces by default */
-    protected string $indentation = '    ';
+    protected $indentation = '    ';
 
     /**
+     * @var string|null
      * TODO: Type should be changed to "string" in the next major version. Nullable for BC
      */
-    protected ?string $sourceContent = null;
+    protected $sourceContent = null;
 
     /**
      * @param  array $options

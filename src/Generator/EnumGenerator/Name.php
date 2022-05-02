@@ -12,9 +12,15 @@ use function substr;
  */
 final class Name
 {
-    private string $name;
+    /**
+     * @var string
+     */
+    private $name;
 
-    private ?string $namespace;
+    /**
+     * @var string|null
+     */
+    private $namespace;
 
     private function __construct(string $name, ?string $namespace)
     {

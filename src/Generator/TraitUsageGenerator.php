@@ -20,19 +20,22 @@ use function strpos;
 
 class TraitUsageGenerator extends AbstractGenerator implements TraitUsageInterface
 {
-    protected ClassGenerator $classGenerator;
+    /**
+     * @var ClassGenerator
+     */
+    protected $classGenerator;
 
     /** @psalm-var array<int, string> Array of trait names */
-    protected array $traits = [];
+    protected $traits = [];
 
     /** @var array Array of trait aliases */
-    protected array $traitAliases = [];
+    protected $traitAliases = [];
 
     /** @var array Array of trait overrides */
-    protected array $traitOverrides = [];
+    protected $traitOverrides = [];
 
     /** @var array Array of string names */
-    protected array $uses = [];
+    protected $uses = [];
 
     public function __construct(ClassGenerator $classGenerator)
     {

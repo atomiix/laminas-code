@@ -17,17 +17,35 @@ use function wordwrap;
 
 class DocBlockGenerator extends AbstractGenerator
 {
-    protected string $shortDescription = '';
+    /**
+     * @var string
+     */
+    protected $shortDescription = '';
 
-    protected string $longDescription = '';
+    /**
+     * @var string
+     */
+    protected $longDescription = '';
 
-    protected array $tags = [];
+    /**
+     * @var array
+     */
+    protected $tags = [];
 
-    protected string $indentation = '';
+    /**
+     * @var string
+     */
+    protected $indentation = '';
 
-    protected bool $wordwrap = true;
+    /**
+     * @var bool
+     */
+    protected $wordwrap = true;
 
-    protected static ?TagManager $tagManager = null;
+    /**
+     * @var TagManager|null
+     */
+    protected static $tagManager = null;
 
     /**
      * Build a DocBlock generator object from a reflection object

@@ -231,7 +231,7 @@ class TypeGeneratorTest extends TestCase
     {
         return array_filter(
             $this->validType(),
-            static fn(array $pair) => 0 === strpos($pair[1], '\\')
+            static function(array $pair) { return 0 === strpos($pair[1], '\\'); }
         );
     }
 

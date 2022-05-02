@@ -26,7 +26,10 @@ final class EnumGenerator
      */
     private const INDENTATION = '    ';
 
-    private Name $name;
+    /**
+     * @var Name
+     */
+    private $name;
 
     /** @var BackedCases|PureCases */
     private $cases;
@@ -69,7 +72,7 @@ final class EnumGenerator
         return implode(
             '',
             array_map(
-                fn (string $case): string => self::INDENTATION . 'case ' . $case . ';' . self::LINE_FEED,
+                function (string $case): string { return self::INDENTATION . 'case ' . $case . ';' . self::LINE_FEED; },
                 $this->cases->getCases()
             )
         );
@@ -91,7 +94,7 @@ final class EnumGenerator
     {
         return new self(
             Name::fromFullyQualifiedClassName($options['name']),
-            CaseFactory::fromOptions($options),
+            CaseFactory::fromOptions($options)
         );
     }
 
@@ -103,7 +106,7 @@ final class EnumGenerator
 
         return new self(
             Name::fromFullyQualifiedClassName($enum->getName()),
-            CaseFactory::fromReflectionCases($enum),
+            CaseFactory::fromReflectionCases($enum)
         );
     }
 }

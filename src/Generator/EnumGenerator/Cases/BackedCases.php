@@ -14,10 +14,13 @@ use function sprintf;
  */
 final class BackedCases
 {
-    private string $type;
+    /**
+     * @var string
+     */
+    private $type;
 
     /** @var list<non-empty-string> */
-    private array $cases;
+    private $cases;
 
     /**
      * @param list<non-empty-string> $cases

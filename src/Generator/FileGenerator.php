@@ -39,31 +39,46 @@ use const T_WHITESPACE;
 
 class FileGenerator extends AbstractGenerator
 {
-    protected string $filename = '';
+    /**
+     * @var string
+     */
+    protected $filename = '';
 
-    protected ?DocBlockGenerator $docBlock = null;
+    /**
+     * @var DocBlockGenerator|null
+     */
+    protected $docBlock = null;
 
     /** @var string[] */
-    protected array $requiredFiles = [];
+    protected $requiredFiles = [];
 
-    protected string $namespace = '';
+    /**
+     * @var string
+     */
+    protected $namespace = '';
 
-    /** @psalm-var list<array{string, string|null}> */
-    protected array $uses = [];
+    /**
+     * @psalm-var list<array{string, string|null}>
+     * @var array
+     */
+    protected $uses = [];
 
     /**
      * @var ClassGenerator[]
      * @psalm-var array<string, ClassGenerator>
      */
-    protected array $classes = [];
+    protected $classes = [];
 
-    protected string $body = '';
+    /**
+     * @var string
+     */
+    protected $body = '';
 
     /**
      * @var DeclareStatement[]
      * @psalm-var array<string, DeclareStatement>
      */
-    protected array $declares = [];
+    protected $declares = [];
 
     /**
      * Passes $options to {@link setOptions()}.
@@ -101,8 +116,9 @@ class FileGenerator extends AbstractGenerator
                     break;
                 case 'declares':
                     $fileGenerator->setDeclares(
-                        array_map(static fn($directive, $value) =>
-                            DeclareStatement::fromArray([$directive => $value]), array_keys($value), $value)
+                        array_map(static function($directive, $value) {
+                            return DeclareStatement::fromArray([$directive => $value]);
+                        }, array_keys($value), $value)
                     );
                     break;
                 default:

@@ -10,19 +10,40 @@ use function strtolower;
 
 class ParameterGenerator extends AbstractGenerator
 {
-    protected string $name = '';
+    /**
+     * @var string
+     */
+    protected $name = '';
 
-    protected ?TypeGenerator $type = null;
+    /**
+     * @var TypeGenerator|null
+     */
+    protected $type = null;
 
-    protected ?ValueGenerator $defaultValue = null;
+    /**
+     * @var ValueGenerator|null
+     */
+    protected $defaultValue = null;
 
-    protected int $position = 0;
+    /**
+     * @var int
+     */
+    protected $position = 0;
 
-    protected bool $passedByReference = false;
+    /**
+     * @var bool
+     */
+    protected $passedByReference = false;
 
-    private bool $variadic = false;
+    /**
+     * @var bool
+     */
+    private $variadic = false;
 
-    private bool $omitDefaultValue = false;
+    /**
+     * @var bool
+     */
+    private $omitDefaultValue = false;
 
     /**
      * @return ParameterGenerator
