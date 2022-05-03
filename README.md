@@ -1,7 +1,6 @@
-# laminas-code
+# laminas-code-lts
 
-[![Build Status](https://travis-ci.com/laminas/laminas-code.svg?branch=master)](https://travis-ci.com/laminas/laminas-code)
-[![Coverage Status](https://coveralls.io/repos/github/laminas/laminas-code/badge.svg?branch=master)](https://coveralls.io/github/laminas/laminas-code?branch=master)
+This package is a fork of [laminas/laminas-code](https://github.com/laminas/laminas-code) library that adds long term support for a wider range of PHP versions.
 
 `Laminas\Code\Generator` provides facilities to generate arbitrary code using an
 object-oriented interface, both to create new code as well as to update existing

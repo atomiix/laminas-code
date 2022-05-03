@@ -1,15 +1,18 @@
 {
-    "name": "laminas/laminas-code",
-    "description": "Extensions to the PHP Reflection API, static code scanning, and code generation",
+    "name": "prestashop/laminas-code-lts",
+    "description": "Adding support for a wider range of PHP versions to laminas/laminas-code",
     "keywords": [
         "laminas",
         "laminasframework",
         "code"
     ],
-    "homepage": "https://laminas.dev",
+    "homepage": "https://github.com/prestashop/laminas-code-lts",
     "license": "BSD-3-Clause",
     "require": {
         "php": ">=7.2, <8.2"
+    },
+    "replace": {
+        "laminas/laminas-code": "^4.5"
     },
     "require-dev": {
         "ext-phar": "*",
@@ -61,5 +64,11 @@
         "source": "https://github.com/laminas/laminas-code",
         "docs": "https://docs.laminas.dev/laminas-code/",
         "rss": "https://github.com/laminas/laminas-code/releases.atom"
+    },
+    "extra": {
+        "thanks": {
+            "name": "laminas/laminas-code",
+            "url": "https://github.com/laminas/laminas-code"
+        }
     }
 }
