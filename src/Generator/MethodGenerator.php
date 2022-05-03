@@ -19,16 +19,20 @@ use function uasort;
 
 class MethodGenerator extends AbstractMemberGenerator
 {
-    protected ?DocBlockGenerator $docBlock = null;
+    /** @var DocBlockGenerator|null */
+    protected $docBlock;
 
     /** @var ParameterGenerator[] */
-    protected array $parameters = [];
+    protected $parameters = [];
 
-    protected string $body = '';
+    /** @var string */
+    protected $body = '';
 
-    private ?TypeGenerator $returnType = null;
+    /** @var TypeGenerator|null */
+    private $returnType;
 
-    private bool $returnsReference = false;
+    /** @var bool */
+    private $returnsReference = false;
 
     /**
      * @return MethodGenerator
@@ -55,7 +59,7 @@ class MethodGenerator extends AbstractMemberGenerator
      * This is similar to fromReflection() but without the method body and phpdoc as this is quite heavy to copy.
      * It's for example useful when creating proxies where you normally change the method body anyway.
      */
-    public static function copyMethodSignature(MethodReflection $reflectionMethod): MethodGenerator
+    public static function copyMethodSignature(MethodReflection $reflectionMethod): self
     {
         $method         = new static();
         $declaringClass = $reflectionMethod->getDeclaringClass();
@@ -130,7 +134,6 @@ class MethodGenerator extends AbstractMemberGenerator
      * @configkey static           bool
      * @configkey visibility       string
      * @throws Exception\InvalidArgumentException
-     * @param  array $array
      * @return MethodGenerator
      */
     public static function fromArray(array $array)
@@ -185,10 +188,10 @@ class MethodGenerator extends AbstractMemberGenerator
     }
 
     /**
-     * @param  ?string                              $name
+     * @param  ?string                               $name
      * @param ParameterGenerator[]|array[]|string[] $parameters
      * @param int|int[]                             $flags
-     * @param  ?string                              $body
+     * @param  ?string                               $body
      * @param DocBlockGenerator|string|null         $docBlock
      */
     public function __construct(
@@ -217,7 +220,7 @@ class MethodGenerator extends AbstractMemberGenerator
 
     /**
      * @param  ParameterGenerator[]|array[]|string[] $parameters
-     * @return MethodGenerator
+     * @return $this
      */
     public function setParameters(array $parameters)
     {
@@ -233,7 +236,7 @@ class MethodGenerator extends AbstractMemberGenerator
     /**
      * @param  ParameterGenerator|array|string $parameter
      * @throws Exception\InvalidArgumentException
-     * @return MethodGenerator
+     * @return $this
      */
     public function setParameter($parameter)
     {
@@ -270,7 +273,7 @@ class MethodGenerator extends AbstractMemberGenerator
 
     /**
      * @param  string $body
-     * @return MethodGenerator
+     * @return $this
      */
     public function setBody($body)
     {
@@ -288,7 +291,7 @@ class MethodGenerator extends AbstractMemberGenerator
 
     /**
      * @param string|null $returnType
-     * @return MethodGenerator
+     * @return $this
      */
     public function setReturnType($returnType = null)
     {
@@ -309,7 +312,7 @@ class MethodGenerator extends AbstractMemberGenerator
 
     /**
      * @param bool $returnsReference
-     * @return MethodGenerator
+     * @return $this
      */
     public function setReturnsReference($returnsReference)
     {
@@ -330,8 +333,9 @@ class MethodGenerator extends AbstractMemberGenerator
     {
         uasort(
             $this->parameters,
-            static fn(ParameterGenerator $item1, ParameterGenerator $item2)
-                => $item1->getPosition() <=> $item2->getPosition()
+            static function (ParameterGenerator $item1, ParameterGenerator $item2) {
+                return $item1->getPosition() <=> $item2->getPosition();
+            }
         );
     }
 

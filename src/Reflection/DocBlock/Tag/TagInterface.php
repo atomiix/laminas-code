@@ -8,7 +8,6 @@ interface TagInterface extends PrototypeInterface
 {
     /**
      * @param  string $content
-     * @return void
      */
-    public function initialize($content);
+    public function initialize($content): void;
 }

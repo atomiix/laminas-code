@@ -15,8 +15,8 @@ class LicenseTag extends AbstractGenerator implements TagInterface
     protected $licenseName;
 
     /**
-     * @param string $url
-     * @param string $licenseName
+     * @param null|string $url
+     * @param null|string $licenseName
      */
     public function __construct($url = null, $licenseName = null)
     {
@@ -51,7 +51,7 @@ class LicenseTag extends AbstractGenerator implements TagInterface
 
     /**
      * @param string $url
-     * @return LicenseTag
+     * @return $this
      */
     public function setUrl($url)
     {
@@ -69,7 +69,7 @@ class LicenseTag extends AbstractGenerator implements TagInterface
 
     /**
      * @param  string $name
-     * @return LicenseTag
+     * @return $this
      */
     public function setLicenseName($name)
     {

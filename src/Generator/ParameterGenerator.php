@@ -10,19 +10,26 @@ use function strtolower;
 
 class ParameterGenerator extends AbstractGenerator
 {
-    protected string $name = '';
+    /** @var string */
+    protected $name = '';
 
-    protected ?TypeGenerator $type = null;
+    /** @var TypeGenerator|null */
+    protected $type;
 
-    protected ?ValueGenerator $defaultValue = null;
+    /** @var ValueGenerator|null */
+    protected $defaultValue;
 
-    protected int $position = 0;
+    /** @var int */
+    protected $position = 0;
 
-    protected bool $passedByReference = false;
+    /** @var bool */
+    protected $passedByReference = false;
 
-    private bool $variadic = false;
+    /** @var bool */
+    private $variadic = false;
 
-    private bool $omitDefaultValue = false;
+    /** @var bool */
+    private $omitDefaultValue = false;
 
     /**
      * @return ParameterGenerator
@@ -69,7 +76,6 @@ class ParameterGenerator extends AbstractGenerator
      * @configkey sourcecontent         string
      * @configkey omitdefaultvalue      bool
      * @throws Exception\InvalidArgumentException
-     * @param  array $array
      * @return ParameterGenerator
      */
     public static function fromArray(array $array)
@@ -117,9 +123,9 @@ class ParameterGenerator extends AbstractGenerator
     /**
      * @param  ?string $name
      * @param  ?string $type
-     * @param  ?mixed $defaultValue
-     * @param  ?int $position
-     * @param  bool $passByReference
+     * @param  ?mixed  $defaultValue
+     * @param  ?int    $position
+     * @param  bool    $passByReference
      */
     public function __construct(
         $name = null,
@@ -147,7 +153,7 @@ class ParameterGenerator extends AbstractGenerator
 
     /**
      * @param  string $type
-     * @return ParameterGenerator
+     * @return $this
      */
     public function setType($type)
     {
@@ -168,7 +174,7 @@ class ParameterGenerator extends AbstractGenerator
 
     /**
      * @param  string $name
-     * @return ParameterGenerator
+     * @return $this
      */
     public function setName($name)
     {
@@ -190,7 +196,7 @@ class ParameterGenerator extends AbstractGenerator
      * Certain variables are difficult to express
      *
      * @param  null|bool|string|int|float|array|ValueGenerator $defaultValue
-     * @return ParameterGenerator
+     * @return $this
      */
     public function setDefaultValue($defaultValue)
     {
@@ -216,7 +222,7 @@ class ParameterGenerator extends AbstractGenerator
 
     /**
      * @param  int $position
-     * @return ParameterGenerator
+     * @return $this
      */
     public function setPosition($position)
     {
@@ -242,7 +248,7 @@ class ParameterGenerator extends AbstractGenerator
 
     /**
      * @param  bool $passedByReference
-     * @return ParameterGenerator
+     * @return $this
      */
     public function setPassedByReference($passedByReference)
     {
@@ -252,7 +258,7 @@ class ParameterGenerator extends AbstractGenerator
 
     /**
      * @param bool $variadic
-     * @return ParameterGenerator
+     * @return $this
      */
     public function setVariadic($variadic)
     {
@@ -316,7 +322,7 @@ class ParameterGenerator extends AbstractGenerator
     }
 
     /**
-     * @return ParameterGenerator
+     * @return $this
      */
     public function omitDefaultValue(bool $omit = true)
     {

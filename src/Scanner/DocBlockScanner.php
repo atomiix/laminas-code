@@ -71,10 +71,7 @@ class DocBlockScanner
         return $this->tags;
     }
 
-    /**
-     * @return void
-     */
-    protected function scan()
+    protected function scan(): void
     {
         if ($this->isScanned) {
             return;

@@ -53,9 +53,8 @@ class DocBlockReflection implements ReflectionInterface
      * Required by the Reflector interface.
      *
      * @todo   What should this do?
-     * @return void
      */
-    public static function export()
+    public static function export(): void
     {
     }
 
@@ -198,7 +197,7 @@ class DocBlockReflection implements ReflectionInterface
     /**
      * Get all DocBlock annotation tags
      *
-     * @param  string $filter
+     * @param  null|string $filter
      * @return DocBlockTagInterface[]
      */
     public function getTags($filter = null)
@@ -220,10 +219,8 @@ class DocBlockReflection implements ReflectionInterface
 
     /**
      * Parse the DocBlock
-     *
-     * @return void
      */
-    protected function reflect()
+    protected function reflect(): void
     {
         if ($this->isReflected) {
             return;

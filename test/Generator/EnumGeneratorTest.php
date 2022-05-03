@@ -1,5 +1,7 @@
 <?php
 
+// phpcs:disable WebimpressCodingStandard.Arrays.TrailingArrayComma
+
 namespace LaminasTest\Code\Generator;
 
 use InvalidArgumentException;
@@ -52,14 +54,14 @@ final class EnumGeneratorTest extends TestCase
                 'pureCases' => ['Hearts', 'Diamonds', 'Clubs', 'Spades'],
             ],
             <<<CODE
-                enum Suit {
-                    case Hearts;
-                    case Diamonds;
-                    case Clubs;
-                    case Spades;
-                }
-                
-                CODE,
+enum Suit {
+    case Hearts;
+    case Diamonds;
+    case Clubs;
+    case Spades;
+}
+
+CODE
         ];
 
         yield 'pure enum with namespace' => [
@@ -68,16 +70,16 @@ final class EnumGeneratorTest extends TestCase
                 'pureCases' => ['Hearts', 'Diamonds', 'Clubs', 'Spades'],
             ],
             <<<CODE
-                namespace My\Namespaced;
-                
-                enum Suit {
-                    case Hearts;
-                    case Diamonds;
-                    case Clubs;
-                    case Spades;
-                }
-                
-                CODE,
+namespace My\Namespaced;
+
+enum Suit {
+    case Hearts;
+    case Diamonds;
+    case Clubs;
+    case Spades;
+}
+
+CODE
         ];
 
         yield 'backed string enums with namespace' => [
@@ -89,16 +91,16 @@ final class EnumGeneratorTest extends TestCase
                 ],
             ],
             <<<CODE
-                namespace My\Namespaced;
-                
-                enum Suit: string {
-                    case Hearts = 'H';
-                    case Diamonds = 'D';
-                    case Clubs = 'C';
-                    case Spades = 'S';
-                }
-                
-                CODE,
+namespace My\Namespaced;
+
+enum Suit: string {
+    case Hearts = 'H';
+    case Diamonds = 'D';
+    case Clubs = 'C';
+    case Spades = 'S';
+}
+
+CODE
         ];
 
         yield 'backed integer enums with namespace' => [
@@ -110,16 +112,16 @@ final class EnumGeneratorTest extends TestCase
                 ],
             ],
             <<<CODE
-                namespace My\Namespaced;
-                
-                enum Suit: int {
-                    case Hearts = 1;
-                    case Diamonds = 2;
-                    case Clubs = 3;
-                    case Spades = 4;
-                }
-                
-                CODE,
+namespace My\Namespaced;
+
+enum Suit: int {
+    case Hearts = 1;
+    case Diamonds = 2;
+    case Clubs = 3;
+    case Spades = 4;
+}
+
+CODE
         ];
     }
 
@@ -160,42 +162,42 @@ final class EnumGeneratorTest extends TestCase
         yield 'pure enum reflection' => [
             'TestNamespace\\Environment',
             <<<'PHP'
-                namespace TestNamespace;
+namespace TestNamespace;
 
-                enum Environment {
-                    case Dev;
-                    case Test;
-                    case Prod;
-                }
-                
-                PHP,
+enum Environment {
+    case Dev;
+    case Test;
+    case Prod;
+}
+
+PHP
         ];
         yield 'string backed enum reflection' => [
             'TestNamespace\\Orientation',
             <<<'PHP'
-                namespace TestNamespace;
+namespace TestNamespace;
 
-                enum Orientation: string {
-                    case North = 'N';
-                    case South = 'S';
-                    case East = 'E';
-                    case West = 'W';
-                }
-                
-                PHP,
+enum Orientation: string {
+    case North = 'N';
+    case South = 'S';
+    case East = 'E';
+    case West = 'W';
+}
+
+PHP
         ];
         yield 'int backed enum reflection' => [
             'TestNamespace\\Flags',
             <<<'PHP'
-                namespace TestNamespace;
+namespace TestNamespace;
 
-                enum Flags: int {
-                    case Public = 1;
-                    case Protected = 2;
-                    case Private = 3;
-                }
-                
-                PHP,
+enum Flags: int {
+    case Public = 1;
+    case Protected = 2;
+    case Private = 3;
+}
+
+PHP
         ];
     }
 }

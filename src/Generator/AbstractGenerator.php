@@ -18,15 +18,17 @@ abstract class AbstractGenerator implements GeneratorInterface
      */
     public const LINE_FEED = "\n";
 
-    protected bool $isSourceDirty = true;
+    /** @var bool */
+    protected $isSourceDirty = true;
 
     /** @var string 4 spaces by default */
-    protected string $indentation = '    ';
+    protected $indentation = '    ';
 
     /**
+     * @var string|null
      * TODO: Type should be changed to "string" in the next major version. Nullable for BC
      */
-    protected ?string $sourceContent = null;
+    protected $sourceContent;
 
     /**
      * @param  array $options
@@ -40,7 +42,7 @@ abstract class AbstractGenerator implements GeneratorInterface
 
     /**
      * @param  bool $isSourceDirty
-     * @return AbstractGenerator
+     * @return $this
      */
     public function setSourceDirty($isSourceDirty = true)
     {
@@ -58,7 +60,7 @@ abstract class AbstractGenerator implements GeneratorInterface
 
     /**
      * @param  string $indentation
-     * @return AbstractGenerator
+     * @return $this
      */
     public function setIndentation($indentation)
     {
@@ -76,7 +78,7 @@ abstract class AbstractGenerator implements GeneratorInterface
 
     /**
      * @param  ?string $sourceContent
-     * @return AbstractGenerator
+     * @return $this
      */
     public function setSourceContent($sourceContent)
     {
@@ -95,7 +97,7 @@ abstract class AbstractGenerator implements GeneratorInterface
     /**
      * @param  array|Traversable $options
      * @throws Exception\InvalidArgumentException
-     * @return AbstractGenerator
+     * @return $this
      */
     public function setOptions($options)
     {

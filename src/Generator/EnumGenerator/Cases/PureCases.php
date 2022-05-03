@@ -10,7 +10,7 @@ namespace Laminas\Code\Generator\EnumGenerator\Cases;
 final class PureCases
 {
     /** @var list<non-empty-string> */
-    private array $cases;
+    private $cases;
 
     /**
      * @param list<non-empty-string> $cases

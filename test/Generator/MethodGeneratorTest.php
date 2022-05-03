@@ -102,7 +102,9 @@ class MethodGeneratorTest extends TestCase
 
         $params = $methodGenerator->getParameters();
 
-        $sorting = array_map(static fn(ParameterGenerator $parameter): string => $parameter->getName(), $params);
+        $sorting = array_map(static function (ParameterGenerator $parameter): string {
+            return $parameter->getName();
+        }, $params);
 
         self::assertEquals(['foo' => 'foo', 'baz' => 'baz', 'bar' => 'bar'], $sorting);
     }
@@ -323,7 +325,7 @@ EOS;
     /**
      * @dataProvider returnsReferenceValues
      * @param bool|string|int $value
-     * @param bool $expected
+     * @param bool            $expected
      */
     public function testCreateFromArrayWithReturnsReference($value, $expected): void
     {
@@ -473,8 +475,10 @@ PHP;
 
         return array_values(array_filter(
             $parameters,
-            static fn(array $parameter) => PHP_VERSION_ID >= 80000
-                || $parameter[0] !== Php80Types::class
+            static function (array $parameter) {
+                return PHP_VERSION_ID >= 80000
+                || $parameter[0] !== Php80Types::class;
+            }
         ));
     }
 

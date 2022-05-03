@@ -33,7 +33,7 @@ class PropertyTag implements TagInterface, PhpDocTypedTagInterface
      *
      * @param  string $tagDocblockLine
      */
-    public function initialize($tagDocblockLine)
+    public function initialize($tagDocblockLine): void
     {
         $match = [];
         if (! preg_match('#^(.+)?(\$[\S]+)[\s]*(.*)$#m', $tagDocblockLine, $match)) {

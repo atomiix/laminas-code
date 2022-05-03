@@ -42,7 +42,7 @@ class MethodTag implements TagInterface, PhpDocTypedTagInterface
      *
      * @param  string $tagDocblockLine
      */
-    public function initialize($tagDocblockLine)
+    public function initialize($tagDocblockLine): void
     {
         $match = [];
 

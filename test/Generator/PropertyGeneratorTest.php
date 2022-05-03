@@ -12,7 +12,6 @@ use Laminas\Code\Generator\ValueGenerator;
 use Laminas\Code\Reflection\ClassReflection;
 use Laminas\Code\Reflection\PropertyReflection;
 use LaminasTest\Code\Generator\TestAsset\ClassWithTypedProperty;
-use PHP_CodeSniffer\Tokenizers\PHP;
 use PHPUnit\Framework\TestCase;
 use ReflectionProperty;
 use stdClass;
@@ -387,6 +386,7 @@ EOS;
         $this->assertSame('    public static $fooStaticProperty;', $code);
     }
 
+    /** @requires PHP >= 7.3 */
     public function testFromReflectionOmitsTypeHintInTypedProperty(): void
     {
         $reflectionProperty = new PropertyReflection(ClassWithTypedProperty::class, 'typedProperty');

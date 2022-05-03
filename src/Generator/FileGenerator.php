@@ -39,31 +39,38 @@ use const T_WHITESPACE;
 
 class FileGenerator extends AbstractGenerator
 {
-    protected string $filename = '';
+    /** @var string */
+    protected $filename = '';
 
-    protected ?DocBlockGenerator $docBlock = null;
+    /** @var DocBlockGenerator|null */
+    protected $docBlock;
 
     /** @var string[] */
-    protected array $requiredFiles = [];
+    protected $requiredFiles = [];
 
-    protected string $namespace = '';
+    /** @var string */
+    protected $namespace = '';
 
-    /** @psalm-var list<array{string, string|null}> */
-    protected array $uses = [];
+    /**
+     * @psalm-var list<array{string, string|null}>
+     * @var array
+     */
+    protected $uses = [];
 
     /**
      * @var ClassGenerator[]
      * @psalm-var array<string, ClassGenerator>
      */
-    protected array $classes = [];
+    protected $classes = [];
 
-    protected string $body = '';
+    /** @var string */
+    protected $body = '';
 
     /**
      * @var DeclareStatement[]
      * @psalm-var array<string, DeclareStatement>
      */
-    protected array $declares = [];
+    protected $declares = [];
 
     /**
      * Passes $options to {@link setOptions()}.
@@ -78,7 +85,6 @@ class FileGenerator extends AbstractGenerator
     }
 
     /**
-     * @param  array $values
      * @return FileGenerator
      */
     public static function fromArray(array $values)
@@ -101,8 +107,9 @@ class FileGenerator extends AbstractGenerator
                     break;
                 case 'declares':
                     $fileGenerator->setDeclares(
-                        array_map(static fn($directive, $value) =>
-                            DeclareStatement::fromArray([$directive => $value]), array_keys($value), $value)
+                        array_map(static function ($directive, $value) {
+                            return DeclareStatement::fromArray([$directive => $value]);
+                        }, array_keys($value), $value)
                     );
                     break;
                 default:
@@ -120,7 +127,7 @@ class FileGenerator extends AbstractGenerator
     /**
      * @param  DocBlockGenerator|array|string $docBlock
      * @throws Exception\InvalidArgumentException
-     * @return FileGenerator
+     * @return $this
      */
     public function setDocBlock($docBlock)
     {
@@ -152,7 +159,7 @@ class FileGenerator extends AbstractGenerator
 
     /**
      * @param  string[] $requiredFiles
-     * @return FileGenerator
+     * @return $this
      */
     public function setRequiredFiles(array $requiredFiles)
     {
@@ -178,7 +185,7 @@ class FileGenerator extends AbstractGenerator
 
     /**
      * @param  string $namespace
-     * @return FileGenerator
+     * @return $this
      */
     public function setNamespace($namespace)
     {
@@ -216,8 +223,7 @@ class FileGenerator extends AbstractGenerator
     }
 
     /**
-     * @param  array $uses
-     * @return FileGenerator
+     * @return $this
      */
     public function setUses(array $uses)
     {
@@ -238,9 +244,9 @@ class FileGenerator extends AbstractGenerator
     }
 
     /**
-     * @param  string $use
+     * @param  string      $use
      * @param  null|string $as
-     * @return FileGenerator
+     * @return $this
      */
     public function setUse($use, $as = null)
     {
@@ -252,7 +258,7 @@ class FileGenerator extends AbstractGenerator
 
     /**
      * @param  array[]|string[]|ClassGenerator[] $classes
-     * @return FileGenerator
+     * @return $this
      */
     public function setClasses(array $classes)
     {
@@ -290,7 +296,7 @@ class FileGenerator extends AbstractGenerator
     /**
      * @param  array|string|ClassGenerator $class
      * @throws Exception\InvalidArgumentException
-     * @return FileGenerator
+     * @return $this
      */
     public function setClass($class)
     {
@@ -315,7 +321,7 @@ class FileGenerator extends AbstractGenerator
 
     /**
      * @param  string $filename
-     * @return FileGenerator
+     * @return $this
      */
     public function setFilename($filename)
     {
@@ -341,7 +347,7 @@ class FileGenerator extends AbstractGenerator
 
     /**
      * @param  string $body
-     * @return FileGenerator
+     * @return $this
      */
     public function setBody($body)
     {
@@ -570,7 +576,7 @@ class FileGenerator extends AbstractGenerator
     }
 
     /**
-     * @return FileGenerator
+     * @return $this
      * @throws Exception\RuntimeException
      */
     public function write()

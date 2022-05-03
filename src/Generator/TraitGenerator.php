@@ -67,7 +67,6 @@ class TraitGenerator extends ClassGenerator
      * @configkey properties
      * @configkey methods
      * @throws Exception\InvalidArgumentException
-     * @param  array $array
      * @return static
      */
     public static function fromArray(array $array)

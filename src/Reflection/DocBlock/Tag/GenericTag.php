@@ -31,9 +31,8 @@ class GenericTag implements TagInterface, PrototypeGenericInterface
 
     /**
      * @param  string $tagDocBlockLine
-     * @return void
      */
-    public function initialize($tagDocBlockLine)
+    public function initialize($tagDocBlockLine): void
     {
         $this->parse($tagDocBlockLine);
     }

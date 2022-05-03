@@ -13,10 +13,10 @@ class MethodTag extends AbstractTypeableTag implements TagInterface
     protected $isStatic = false;
 
     /**
-     * @param string $methodName
-     * @param array $types
-     * @param string $description
-     * @param bool $isStatic
+     * @param null|string $methodName
+     * @param array       $types
+     * @param null|string $description
+     * @param bool        $isStatic
      */
     public function __construct($methodName = null, $types = [], $description = null, $isStatic = false)
     {
@@ -39,7 +39,7 @@ class MethodTag extends AbstractTypeableTag implements TagInterface
 
     /**
      * @param bool $isStatic
-     * @return MethodTag
+     * @return $this
      */
     public function setIsStatic($isStatic)
     {
@@ -57,7 +57,7 @@ class MethodTag extends AbstractTypeableTag implements TagInterface
 
     /**
      * @param string $methodName
-     * @return MethodTag
+     * @return $this
      */
     public function setMethodName($methodName)
     {

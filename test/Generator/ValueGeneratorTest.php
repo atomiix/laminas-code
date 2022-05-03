@@ -81,7 +81,6 @@ class ValueGeneratorTest extends TestCase
     }
 
     /**
-     * @return array
      * @psalm-return non-empty-list<array{PropertyValueGenerator, non-empty-string}>
      */
     public function validConstantTypes(): array
@@ -124,7 +123,6 @@ class ValueGeneratorTest extends TestCase
 
     /**
      * @param string $longOutput
-     * @param array $value
      * @return array
      */
     protected function generateArrayData($longOutput, array $value)
@@ -336,7 +334,6 @@ EOS;
     /**
      * @dataProvider unsortedKeysArray
      * @param string $type
-     * @param array $value
      * @param string $expected
      */
     public function testPropertyDefaultValueCanHandleArrayWithUnsortedKeys($type, array $value, $expected)
@@ -391,7 +388,6 @@ EOS;
     /**
      * @dataProvider simpleArray
      * @param string $type
-     * @param array $value
      * @param string $expected
      */
     public function testPropertyDefaultValueCanHandleArray($type, array $value, $expected)
@@ -422,7 +418,6 @@ EOS;
     /**
      * @dataProvider complexArray
      * @param string $type
-     * @param array $value
      * @param string $expected
      */
     public function testPropertyDefaultValueCanHandleComplexArrayOfTypes($type, array $value, $expected)

@@ -13,9 +13,9 @@ class ParamTag extends AbstractTypeableTag implements TagInterface
     protected $variableName;
 
     /**
-     * @param string $variableName
-     * @param array $types
-     * @param string $description
+     * @param null|string $variableName
+     * @param array       $types
+     * @param null|string $description
      */
     public function __construct($variableName = null, $types = [], $description = null)
     {
@@ -48,7 +48,7 @@ class ParamTag extends AbstractTypeableTag implements TagInterface
 
     /**
      * @param string $variableName
-     * @return ParamTag
+     * @return $this
      */
     public function setVariableName($variableName)
     {

@@ -17,17 +17,23 @@ use function wordwrap;
 
 class DocBlockGenerator extends AbstractGenerator
 {
-    protected string $shortDescription = '';
+    /** @var string */
+    protected $shortDescription = '';
 
-    protected string $longDescription = '';
+    /** @var string */
+    protected $longDescription = '';
 
-    protected array $tags = [];
+    /** @var array */
+    protected $tags = [];
 
-    protected string $indentation = '';
+    /** @var string */
+    protected $indentation = '';
 
-    protected bool $wordwrap = true;
+    /** @var bool */
+    protected $wordwrap = true;
 
-    protected static ?TagManager $tagManager = null;
+    /** @var TagManager|null */
+    protected static $tagManager;
 
     /**
      * Build a DocBlock generator object from a reflection object
@@ -58,7 +64,6 @@ class DocBlockGenerator extends AbstractGenerator
      * @configkey longdescription  string The long description for this doc block
      * @configkey tags             array
      * @throws Exception\InvalidArgumentException
-     * @param  array $array
      * @return DocBlockGenerator
      */
     public static function fromArray(array $array)
@@ -115,7 +120,7 @@ class DocBlockGenerator extends AbstractGenerator
 
     /**
      * @param  string $shortDescription
-     * @return DocBlockGenerator
+     * @return $this
      */
     public function setShortDescription($shortDescription)
     {
@@ -133,7 +138,7 @@ class DocBlockGenerator extends AbstractGenerator
 
     /**
      * @param  string $longDescription
-     * @return DocBlockGenerator
+     * @return $this
      */
     public function setLongDescription($longDescription)
     {
@@ -151,7 +156,7 @@ class DocBlockGenerator extends AbstractGenerator
 
     /**
      * @param  array[]|TagInterface[] $tags
-     * @return DocBlockGenerator
+     * @return $this
      */
     public function setTags(array $tags)
     {
@@ -165,7 +170,7 @@ class DocBlockGenerator extends AbstractGenerator
     /**
      * @param array|TagInterface $tag
      * @throws Exception\InvalidArgumentException
-     * @return DocBlockGenerator
+     * @return $this
      */
     public function setTag($tag)
     {
@@ -196,7 +201,7 @@ class DocBlockGenerator extends AbstractGenerator
 
     /**
      * @param bool $value
-     * @return DocBlockGenerator
+     * @return $this
      */
     public function setWordWrap($value)
     {

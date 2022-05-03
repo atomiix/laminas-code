@@ -24,7 +24,7 @@ abstract class AbstractTypeableTag extends AbstractGenerator
 
     /**
      * @param string|string[] $types
-     * @param string          $description
+     * @param null|string     $description
      */
     public function __construct($types = [], $description = null)
     {
@@ -39,7 +39,7 @@ abstract class AbstractTypeableTag extends AbstractGenerator
 
     /**
      * @param string $description
-     * @return AbstractTypeableTag
+     * @return $this
      */
     public function setDescription($description)
     {
@@ -60,7 +60,7 @@ abstract class AbstractTypeableTag extends AbstractGenerator
      * e.g. array('int', 'null') or "int|null"
      *
      * @param array|string $types
-     * @return AbstractTypeableTag
+     * @return $this
      */
     public function setTypes($types)
     {

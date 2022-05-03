@@ -53,14 +53,17 @@ class ValueGenerator extends AbstractGenerator
     /** @var mixed */
     protected $value;
 
-    protected string $type = self::TYPE_AUTO;
+    /** @var string */
+    protected $type = self::TYPE_AUTO;
 
-    protected int $arrayDepth = 0;
+    /** @var int */
+    protected $arrayDepth = 0;
 
-    protected string $outputMode = self::OUTPUT_MULTIPLE_LINE;
+    /** @var string */
+    protected $outputMode = self::OUTPUT_MULTIPLE_LINE;
 
     /** @var array */
-    protected array $allowedTypes = [];
+    protected $allowedTypes = [];
 
     /**
      * Autodetectable constants
@@ -70,9 +73,9 @@ class ValueGenerator extends AbstractGenerator
     protected $constants;
 
     /**
-     * @param mixed       $value
-     * @param string      $type
-     * @param string      $outputMode
+     * @param null|mixed                            $value
+     * @param string                                $type
+     * @param string                                $outputMode
      * @param null|SplArrayObject|StdlibArrayObject $constants
      */
     public function __construct(
@@ -191,7 +194,7 @@ class ValueGenerator extends AbstractGenerator
 
     /**
      * @param  mixed $value
-     * @return ValueGenerator
+     * @return $this
      */
     public function setValue($value)
     {
@@ -209,7 +212,7 @@ class ValueGenerator extends AbstractGenerator
 
     /**
      * @param  string $type
-     * @return ValueGenerator
+     * @return $this
      */
     public function setType($type)
     {
@@ -227,7 +230,7 @@ class ValueGenerator extends AbstractGenerator
 
     /**
      * @param  int $arrayDepth
-     * @return ValueGenerator
+     * @return $this
      */
     public function setArrayDepth($arrayDepth)
     {
@@ -433,7 +436,7 @@ class ValueGenerator extends AbstractGenerator
      * Quotes value for PHP code.
      *
      * @param  string $input Raw string.
-     * @param  bool $quote Whether add surrounding quotes or not.
+     * @param  bool   $quote Whether add surrounding quotes or not.
      * @return string PHP-ready code.
      */
     public static function escape($input, $quote = true)
@@ -450,7 +453,7 @@ class ValueGenerator extends AbstractGenerator
 
     /**
      * @param  string $outputMode
-     * @return ValueGenerator
+     * @return $this
      */
     public function setOutputMode($outputMode)
     {

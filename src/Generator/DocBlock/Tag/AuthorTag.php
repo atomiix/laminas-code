@@ -15,8 +15,8 @@ class AuthorTag extends AbstractGenerator implements TagInterface
     protected $authorEmail;
 
     /**
-     * @param string $authorName
-     * @param string $authorEmail
+     * @param null|string $authorName
+     * @param null|string $authorEmail
      */
     public function __construct($authorName = null, $authorEmail = null)
     {
@@ -51,7 +51,7 @@ class AuthorTag extends AbstractGenerator implements TagInterface
 
     /**
      * @param string $authorEmail
-     * @return AuthorTag
+     * @return $this
      */
     public function setAuthorEmail($authorEmail)
     {
@@ -69,7 +69,7 @@ class AuthorTag extends AbstractGenerator implements TagInterface
 
     /**
      * @param string $authorName
-     * @return AuthorTag
+     * @return $this
      */
     public function setAuthorName($authorName)
     {

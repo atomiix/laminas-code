@@ -337,7 +337,7 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
      * Take current position and find any whitespace
      *
      * @param array $haystack
-     * @param int $position
+     * @param int   $position
      * @return string
      */
     protected function extractPrefixedWhitespace($haystack, $position)
@@ -367,7 +367,7 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
      * Test for ending brace
      *
      * @param array $haystack
-     * @param int $position
+     * @param int   $position
      * @return bool
      */
     protected function isEndingBrace($haystack, $position)
@@ -434,9 +434,9 @@ class MethodReflection extends PhpReflectionMethod implements ReflectionInterfac
      * Test to see if current position is valid function or
      * closure.  Returns true if it's a function and NOT a closure
      *
-     * @param array $haystack
-     * @param int $position
-     * @param string $functionName
+     * @param array       $haystack
+     * @param int         $position
+     * @param null|string $functionName
      * @return bool
      */
     protected function isValidFunction($haystack, $position, $functionName = null)

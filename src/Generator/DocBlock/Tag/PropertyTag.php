@@ -10,9 +10,9 @@ class PropertyTag extends AbstractTypeableTag implements TagInterface
     protected $propertyName;
 
     /**
-     * @param string $propertyName
-     * @param array $types
-     * @param string $description
+     * @param null|string $propertyName
+     * @param array       $types
+     * @param null|string $description
      */
     public function __construct($propertyName = null, $types = [], $description = null)
     {
@@ -33,7 +33,7 @@ class PropertyTag extends AbstractTypeableTag implements TagInterface
 
     /**
      * @param string $propertyName
-     * @return self
+     * @return $this
      */
     public function setPropertyName($propertyName)
     {

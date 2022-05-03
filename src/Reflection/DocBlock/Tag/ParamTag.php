@@ -34,7 +34,7 @@ class ParamTag implements TagInterface, PhpDocTypedTagInterface
      *
      * @param  string $tagDocBlockLine
      */
-    public function initialize($tagDocBlockLine)
+    public function initialize($tagDocBlockLine): void
     {
         $matches = [];
 

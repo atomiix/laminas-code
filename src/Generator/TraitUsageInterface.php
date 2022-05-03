@@ -89,8 +89,8 @@ interface TraitUsageInterface
      * $visibilty:
      * ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PRIVATE | ReflectionMethod::IS_PROTECTED
      *
-     * @param mixed $method String or Array
-     * @param string $alias
+     * @param mixed    $method String or Array
+     * @param string   $alias
      * @param null|int $visibility
      */
     public function addTraitAlias($method, $alias, $visibility = null);
@@ -140,8 +140,8 @@ interface TraitUsageInterface
      * Option 1: String of trait to replace
      * Option 2: Array of strings of traits to replace
      *
-     * @param mixed $method
-     * @param mixed $overridesToRemove
+     * @param mixed      $method
+     * @param null|mixed $overridesToRemove
      * @return self
      */
     public function removeTraitOverride($method, $overridesToRemove = null);

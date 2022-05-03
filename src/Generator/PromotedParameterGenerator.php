@@ -15,8 +15,11 @@ final class PromotedParameterGenerator extends ParameterGenerator
     public const VISIBILITY_PROTECTED = 'protected';
     public const VISIBILITY_PRIVATE   = 'private';
 
-    /** @psalm-var PromotedParameterGenerator::VISIBILITY_* */
-    private string $visibility;
+    /**
+     * @psalm-var PromotedParameterGenerator::VISIBILITY_*
+     * @var string
+     */
+    private $visibility;
 
     /**
      * @psalm-param non-empty-string $name
@@ -35,7 +38,7 @@ final class PromotedParameterGenerator extends ParameterGenerator
             $type,
             null,
             $position,
-            $passByReference,
+            $passByReference
         );
 
         $this->visibility = $visibility;
@@ -70,19 +73,19 @@ final class PromotedParameterGenerator extends ParameterGenerator
     }
 
     /** @psalm-param PromotedParameterGenerator::VISIBILITY_* $visibility */
-    public static function fromParameterGeneratorWithVisibility(ParameterGenerator $generator, string $visibility): self
+    public static function fromParameterGeneratorWithVisibility(parent $generator, string $visibility): self
     {
         $name = $generator->getName();
         $type = $generator->getType();
 
         if ('' === $name) {
-            throw new \Laminas\Code\Generator\Exception\RuntimeException(
+            throw new Exception\RuntimeException(
                 'Name of promoted parameter must be non-empty-string.'
             );
         }
 
         if ('' === $type) {
-            throw new \Laminas\Code\Generator\Exception\RuntimeException(
+            throw new Exception\RuntimeException(
                 'Type of promoted parameter must be non-empty-string.'
             );
         }

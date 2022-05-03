@@ -19,15 +19,18 @@ abstract class AbstractMemberGenerator extends AbstractGenerator
     public const VISIBILITY_PROTECTED = 'protected';
     public const VISIBILITY_PRIVATE   = 'private';
 
-    protected ?DocBlockGenerator $docBlock = null;
+    /** @var DocBlockGenerator|null */
+    protected $docBlock;
 
-    protected string $name = '';
+    /** @var string */
+    protected $name = '';
 
-    protected int $flags = self::FLAG_PUBLIC;
+    /** @var int */
+    protected $flags = self::FLAG_PUBLIC;
 
     /**
      * @param  int|int[] $flags
-     * @return AbstractMemberGenerator
+     * @return $this
      */
     public function setFlags($flags)
     {
@@ -46,7 +49,7 @@ abstract class AbstractMemberGenerator extends AbstractGenerator
 
     /**
      * @param  int $flag
-     * @return AbstractMemberGenerator
+     * @return $this
      */
     public function addFlag($flag)
     {
@@ -56,7 +59,7 @@ abstract class AbstractMemberGenerator extends AbstractGenerator
 
     /**
      * @param  int $flag
-     * @return AbstractMemberGenerator
+     * @return $this
      */
     public function removeFlag($flag)
     {
@@ -134,7 +137,7 @@ abstract class AbstractMemberGenerator extends AbstractGenerator
 
     /**
      * @param  string $visibility
-     * @return AbstractMemberGenerator
+     * @return $this
      */
     public function setVisibility($visibility)
     {
@@ -173,7 +176,7 @@ abstract class AbstractMemberGenerator extends AbstractGenerator
 
     /**
      * @param  string $name
-     * @return AbstractMemberGenerator
+     * @return $this
      */
     public function setName($name)
     {
@@ -192,7 +195,7 @@ abstract class AbstractMemberGenerator extends AbstractGenerator
     /**
      * @param  DocBlockGenerator|string $docBlock
      * @throws Exception\InvalidArgumentException
-     * @return AbstractMemberGenerator
+     * @return $this
      */
     public function setDocBlock($docBlock)
     {

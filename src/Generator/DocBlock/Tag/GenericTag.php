@@ -16,8 +16,8 @@ class GenericTag extends AbstractGenerator implements TagInterface, PrototypeGen
     protected $content;
 
     /**
-     * @param string $name
-     * @param string $content
+     * @param null|string $name
+     * @param null|string $content
      */
     public function __construct($name = null, $content = null)
     {
@@ -32,7 +32,7 @@ class GenericTag extends AbstractGenerator implements TagInterface, PrototypeGen
 
     /**
      * @param  string $name
-     * @return GenericTag
+     * @return $this
      */
     public function setName($name)
     {
@@ -50,7 +50,7 @@ class GenericTag extends AbstractGenerator implements TagInterface, PrototypeGen
 
     /**
      * @param string $content
-     * @return GenericTag
+     * @return $this
      */
     public function setContent($content)
     {

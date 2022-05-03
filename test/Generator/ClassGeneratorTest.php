@@ -1369,7 +1369,7 @@ EOS;
             new PromotedParameterGenerator(
                 'bar',
                 'Foo',
-                PromotedParameterGenerator::VISIBILITY_PRIVATE,
+                PromotedParameterGenerator::VISIBILITY_PRIVATE
             ),
         ]);
 

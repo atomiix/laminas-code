@@ -19,11 +19,14 @@ class PropertyGenerator extends AbstractMemberGenerator
     public const FLAG_CONSTANT = 0x08;
     public const FLAG_READONLY = 0x80;
 
-    protected bool $isConst = false;
+    /** @var bool */
+    protected $isConst = false;
 
-    protected ?PropertyValueGenerator $defaultValue = null;
+    /** @var PropertyValueGenerator|null */
+    protected $defaultValue;
 
-    private bool $omitDefaultValue = false;
+    /** @var bool */
+    private $omitDefaultValue = false;
 
     /** @return static */
     public static function fromReflection(PropertyReflection $reflectionProperty)
@@ -79,7 +82,6 @@ class PropertyGenerator extends AbstractMemberGenerator
      * @configkey omitdefaultvalue   bool
      * @configkey readonly           bool
      * @throws Exception\InvalidArgumentException
-     * @param  array $array
      * @return static
      */
     public static function fromArray(array $array)
@@ -144,7 +146,7 @@ class PropertyGenerator extends AbstractMemberGenerator
 
     /**
      * @param PropertyValueGenerator|string|array|null $defaultValue
-     * @param int|int[] $flags
+     * @param int|int[]                                $flags
      */
     public function __construct(?string $name = null, $defaultValue = null, $flags = self::FLAG_PUBLIC)
     {
@@ -163,7 +165,7 @@ class PropertyGenerator extends AbstractMemberGenerator
 
     /**
      * @param  bool $const
-     * @return PropertyGenerator
+     * @return $this
      */
     public function setConst($const)
     {
@@ -296,7 +298,7 @@ class PropertyGenerator extends AbstractMemberGenerator
     }
 
     /**
-     * @return PropertyGenerator
+     * @return $this
      */
     public function omitDefaultValue(bool $omit = true)
     {

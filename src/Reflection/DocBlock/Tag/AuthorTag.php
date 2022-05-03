@@ -26,7 +26,7 @@ class AuthorTag implements TagInterface
      *
      * @param  string $tagDocblockLine
      */
-    public function initialize($tagDocblockLine)
+    public function initialize($tagDocblockLine): void
     {
         $match = [];
 
